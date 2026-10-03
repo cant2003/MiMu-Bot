@@ -6,10 +6,13 @@ import yt_dlp
 coockies_path = os.path.join(os.getcwd(), "cookies.txt")
 
 ytdl_format_options = {
-    'format': 'bestaudio/best',
+    'format': 'bestaudio[ext=m4a]/bestaudio/best',
     'noplaylist': True,
     'default_search': 'auto',
     'source_address': '0.0.0.0',
+    'ignoreerrors': False,
+    'no_warnings': True,
+    'extract_flat': False,
 }
 
 if os.path.exists(coockies_path):
