@@ -1,6 +1,9 @@
+import os
 import asyncio
 import discord
 import yt_dlp
+
+coockies_path = os.path.join(os.getcwd(), "cookies.txt")
 
 ytdl_format_options = {
     'format': 'bestaudio/best',
@@ -8,6 +11,9 @@ ytdl_format_options = {
     'default_search': 'auto',
     'source_address': '0.0.0.0',
 }
+
+if os.path.exists(coockies_path):
+    ytdl_format_options['cookiefile'] = coockies_path
 
 ffmpeg_options = {
     'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
