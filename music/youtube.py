@@ -3,10 +3,11 @@ import asyncio
 import discord
 import yt_dlp
 
-coockies_path = os.path.join(os.getcwd(), "cookies.txt")
+# Ruta del archivo de cookies
+cookies_path = os.path.join(os.getcwd(), "cookies.txt")
 
 ytdl_format_options = {
-    'format': 'bestaudio[ext=m4a]/bestaudio/best',
+    'format': 'bestaudio/best',  # Opción flexible y robusta sin forzar extensiones
     'noplaylist': True,
     'default_search': 'auto',
     'source_address': '0.0.0.0',
@@ -15,8 +16,8 @@ ytdl_format_options = {
     'extract_flat': False,
 }
 
-if os.path.exists(coockies_path):
-    ytdl_format_options['cookiefile'] = coockies_path
+if os.path.exists(cookies_path):
+    ytdl_format_options['cookiefile'] = cookies_path
 
 ffmpeg_options = {
     'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
