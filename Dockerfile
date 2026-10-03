@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY cookies.txt .
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir --upgrade yt-dlp \
+    pip install --no-cache-dir --upgrade yt-dlp && \
     pip install --no-cache-dir -r requirements.txt
 
 # Copiamos el resto del código de nuestro proyecto al contenedor
