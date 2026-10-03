@@ -7,18 +7,27 @@ import yt_dlp
 cookies_path = os.path.join(os.getcwd(), "cookies.txt")
 
 ytdl_format_options = {
-    'format': 'bestaudio/best',  # Opción flexible y robusta sin forzar extensiones
+    'format': 'bestaudio/best',
     'noplaylist': True,
     'default_search': 'auto',
     'source_address': '0.0.0.0',
     'ignoreerrors': False,
     'no_warnings': True,
     'extract_flat': False,
+    # Forzar el cliente web de YouTube para sortear el bloqueo de IPs de servidores
+    'extractor_args': {
+        'youtube': {
+            'player_client': ['web', 'ios']
+        }
+    }
 }
 
 if os.path.exists(cookies_path):
     ytdl_format_options['cookiefile'] = cookies_path
-
+    print("✅ Archivo cookies.txt detectado y cargado correctamente.")
+else:
+    print("⚠️ ADVERTENCIA: No se encontró el archivo cookies.txt en la ruta:", cookies_path)
+    
 ffmpeg_options = {
     'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
     'options': '-vn',
