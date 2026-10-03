@@ -14,10 +14,11 @@ ytdl_format_options = {
     'ignoreerrors': False,
     'no_warnings': True,
     'extract_flat': False,
-    # Forzar el cliente web de YouTube para sortear el bloqueo de IPs de servidores
+    # Forzar clientes android e ios globalmente para saltarse el bloqueo de IP en la nube
     'extractor_args': {
         'youtube': {
-            'player_client': ['web', 'ios']
+            'player_client': ['android', 'ios'],
+            'skip': ['hls', 'dash']
         }
     }
 }
